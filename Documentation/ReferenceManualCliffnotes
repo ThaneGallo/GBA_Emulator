@@ -1,0 +1,37 @@
+Has two processing states:
+- flips between the states
+- all exception handling is performed in the ARM
+
+if exception in thumb then below occurs:
+thumb -> arm -> thumb
+
+
+Memory formats:
+
+little-endian
+lowest addressed byte in the word is lsb
+
+    31--24          23--16       15--8        7--0
+|                        word at A                  |
+|               hw at A+2    |            hw at A   |
+|    byt A+3    |  byt A+2   |  bytm A+1    | byt A |
+
+big-endian
+
+    31--24          23--16       15--8        7--0
+|                        word at A                  |
+|               hw at A    |            hw at A+2   |
+|    byt A    |  byt A+1   |  bytm A+2  | byt A+3   |
+
+
+
+
+
+ARM: 32 bit
+
+registers
+
+
+Thumb: 16 bit (halfword alligned)
+
+registers

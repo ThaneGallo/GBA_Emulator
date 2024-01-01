@@ -1,2 +1,2 @@
 # GBA_Emulator
-C++ emulator for Game Boy Advance games
+Emulator for Game Boy Advance games

@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdint.h>
+
+
+#define register_num 32
+
+uint_32t registers[register_num];
+
+int readRegister(int reg_num){
+        if(reg_num >= 0 && reg_num < register_num) {
+                return registers[reg_num];
+        }
+        else{
+        printf("Register is invalid %d\n");
+        {
+}
+
+void writeRegister(int reg_num, int value){
+
+}
+
+
+int main(){
+
+        uint32_t inst32 = 0xFFFF;
+        uint32_t registers[register_num];
+
+
+
+
+}
+

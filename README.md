@@ -1,2 +1,2 @@
-# GBA_Emulator
+# GB_Emulator
 Emulator for Game Boy games

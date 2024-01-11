@@ -2,41 +2,51 @@
 #include "common.h"
 
 typedef struct {
-	
+	char title[1024];
 	u32 rom_size
 	u8 rom_data
 	rom_header *header
 	
-} cart;
+} cart_context;
+
+
+static cart_context cart;
 
 static const char *ROM_Type[]{
 	"ROM ONLY",
 	"MBC1",
 	"MBC1+RAM",
+	"0x4 ??",
 	"MBC1+RAM+BATTERY",
 	"MBC2",
+	"0x7 ??",
 	"MBC2+BATTERY",
 	"ROM+RAM",
+	"0xA ??",
 	"ROM+RAM+BATTERY",
 	"MMM01",
 	"MMM01+RAM",
+	"0xE ??"
 	"MMM01+RAM+BATTERY",
 	"MBC3+TIMER+BATTERY",
 	"MBC3+TIMER+RAM+BATTERY",
 	"MBC3",
 	"MBC3+RAM+BATTERY",
+	"0x14 ??",
+	"0x15 ??",
+	"0x16 ??",
+	"0x17 ??",
+	"0x18 ??",
 	"MBC5",
 	"MBC5+RAM",
 	"MBC5+RAM+BATTERY",
 	"MBC5+RUMBLE",
 	"MBC5+RUMBLE+RAM",
 	"MBC5+RUMBLE+RAM+BATTERY",
+	"0x1F ??"
 	"MBC6",
+	"0x21 ??",
 	"MBC7+SENSOR+RUMBLE+RAM+BATTERY",
-	"POCKET CAMER",
-	"BANDAI TAMA5",
-	"HuC3",
-	"HuC1+RAM+BATTERY",
 }
 
 static const char *LIC_Code[0xA5]{
@@ -101,7 +111,39 @@ static const char *LIC_Code[0xA5]{
 	[0xA4]= "Konami (Yu-Gi-Oh!)"
 }
 
+
+const char *cart_lic_name(){
+	if(cart.header->old_lic_code <= 0xA4){
+	return(LIC_Code(cart.header->old_lic_code));
+	}
+
+	return "UNKNOWN"
+}
+
+const char *cart_type_name(){
+	if(cart.header->cart_type <= 0x22){
+	return(ROM_Type(cart.header->cart_type));
+	}
+	return "UNKNOWN"
+}
+
+
+
 bool cart_load(char *cart){
+	snprintf(char *cart.title, sizeof(cart.title), "%s", cart);
+
+	FILE *fp = fopen(cart, "r");
+
+	if (!fp){
+	printf("Failed to open: %s\n", cart);
+	return false;
+	}
+
+	printf("Opened: %s\n", cart.title);
+
+
+
+
 
 }
 

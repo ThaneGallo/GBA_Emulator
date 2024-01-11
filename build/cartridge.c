@@ -9,6 +9,35 @@ typedef struct {
 	
 } cart;
 
+static const char *ROM_Type[]{
+	"ROM ONLY",
+	"MBC1",
+	"MBC1+RAM",
+	"MBC1+RAM+BATTERY",
+	"MBC2",
+	"MBC2+BATTERY",
+	"ROM+RAM",
+	"ROM+RAM+BATTERY",
+	"MMM01",
+	"MMM01+RAM",
+	"MMM01+RAM+BATTERY",
+	"MBC3+TIMER+BATTERY",
+	"MBC3+TIMER+RAM+BATTERY",
+	"MBC3",
+	"MBC3+RAM+BATTERY",
+	"MBC5",
+	"MBC5+RAM",
+	"MBC5+RAM+BATTERY",
+	"MBC5+RUMBLE",
+	"MBC5+RUMBLE+RAM",
+	"MBC5+RUMBLE+RAM+BATTERY",
+	"MBC6",
+	"MBC7+SENSOR+RUMBLE+RAM+BATTERY",
+	"POCKET CAMER",
+	"BANDAI TAMA5",
+	"HuC3",
+	"HuC1+RAM+BATTERY",
+}
 
 static const char *LIC_Code[0xA5]{
 	[0x00] = "None",

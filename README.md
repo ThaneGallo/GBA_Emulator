@@ -1,2 +1,2 @@
 # GBA_Emulator
-Emulator for Game Boy Advance games
+Emulator for Game Boy games

@@ -7,10 +7,10 @@ typedef struct {
 	u8 rom_data
 	rom_header *header
 	
-} cart_context;
+} ctx;
 
 
-static cart_context cart;
+static ctx cart;
 
 static const char *ROM_Type[]{
 	"ROM ONLY",
@@ -54,7 +54,7 @@ static const char *LIC_Code[0xA5]{
 	[0x01] = "Nintendo R&D1",
 	[0x08] = "Capcom",
 	[0x13] = "Electronic Arts",
-        [0x19] = "b-ai",
+    [0x19] = "b-ai",
 	[0x20] = "kss",
 	[0x22] = "pow",
 	[0x24] = "PCM complete",
@@ -180,5 +180,21 @@ bool cart_load(char *cart){
 	printf("\t Checksum: %2.2X\n", cart.header->checksum, (checksum & 0xFF) ? "passed" : "fail");
 	
 	return true;
+
+}
+
+u8 cart_read(u16 address){
+	//ROM ONLY type supported
+
+
+return ctx.rom_data[address];
+
+}
+
+
+void cart_write(u16 address, u8 value){
+
+value = ctx.rom_data[address]
+
 
 }

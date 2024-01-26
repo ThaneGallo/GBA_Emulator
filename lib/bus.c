@@ -15,7 +15,6 @@
 // 0xFF00 - 0xFF7F : I/O Registers
 // 0xFF80 - 0xFFFE : Zero Page
 
-
 //uses 16 byte address and outputs 8 byte value at bus
 u8 bus_read(u16 address){
 
@@ -24,6 +23,7 @@ if(addess < 0x8000){
     return cart_read(address);
 }
 
+    NO_IMPL
 
 }
 
@@ -35,5 +35,6 @@ if(addess < 0x8000){
     return cart_write(address);
 }
 
+    NO_IMPL
 
 }

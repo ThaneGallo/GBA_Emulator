@@ -21,4 +21,7 @@ typedef uint64_t u64;
 //checks if number a is between b and c 
 #define BETWEEN(a, b, c) ((a >= b) && (a <= c))
 
+//for unimplimented features
+#define NO_IMPL(fprintf(stderr, "NOT YET IMPLIMENTED"))
+
 void delay(u32 ms);

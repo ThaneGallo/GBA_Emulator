@@ -16,5 +16,17 @@ typedef struct {
 
 } cpu_registers;
 
+typedef struct {
+    cpu_registers regsl
+
+    u16 fetch_data;
+    u16 mem_dest;
+    u8 cur_opcode;
+
+    bool halted;
+    bool stepping;
+
+} cpu_context;
+
 void cpt_init();
 int cpu_step();

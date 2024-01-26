@@ -22,6 +22,6 @@ typedef uint64_t u64;
 #define BETWEEN(a, b, c) ((a >= b) && (a <= c))
 
 //for unimplimented features
-#define NO_IMPL(fprintf(stderr, "NOT YET IMPLIMENTED"))
+#define NO_IMPL(fprintf(stderr, "NOT YET IMPLIMENTED\n"); exit(-5); )
 
 void delay(u32 ms);

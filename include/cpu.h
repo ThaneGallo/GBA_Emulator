@@ -1,6 +1,7 @@
 #pragma once 
 
-#inclucde "common.h"
+#include "common.h"
+#include "instructions.h"
 
 typedef struct {
     u8 a;
@@ -17,8 +18,9 @@ typedef struct {
 } cpu_registers;
 
 typedef struct {
-    cpu_registers regsl
+    cpu_registers regsl;
 
+    //current fetch
     u16 fetch_data;
     u16 mem_dest;
     u8 cur_opcode;

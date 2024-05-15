@@ -1,18 +1,19 @@
-#include "cartridge.h"
-#include "common.h"
+#include "cartridge->h"
+#include "common->h"
+#include "stdio->h"
 
 typedef struct {
 	char title[1024];
-	u32 rom_size
-	u8 rom_data
-	rom_header *header
+	u32 rom_size;
+	u8 rom_data;
+	rom_header *header;
 	
 } ctx;
 
 
 static ctx cart;
 
-static const char *ROM_Type[]{
+static const char *ROM_Type[] {
 	"ROM ONLY",
 	"MBC1",
 	"MBC1+RAM",
@@ -95,7 +96,7 @@ static const char *LIC_Code[0xA5]{
 	[0x71] = "Interplay",
 	[0x72] = "Broderbund",
 	[0x73] = "sculpted",
-	[0x75] = "sci";
+	[0x75] = "sci",
 	[0x78] = "THQ",
 	[0x79] = "Accolade",
 	[0x80] = "misawa",
@@ -113,16 +114,16 @@ static const char *LIC_Code[0xA5]{
 
 
 const char *cart_lic_name(){
-	if(cart.header->old_lic_code <= 0xA4){
-	return(LIC_Code(cart.header->old_lic_code));
+	if(cart->header->old_lic_code <= 0xA4){
+	return(LIC_Code(cart->header->old_lic_code));
 	}
 
 	return "UNKNOWN"
 }
 
 const char *cart_type_name(){
-	if(cart.header->cart_type <= 0x22){
-	return(ROM_Type(cart.header->cart_type));
+	if(cart->header->cart_type <= 0x22){
+	return(ROM_Type(cart->header->cart_type));
 	}
 	return "UNKNOWN"
 }
@@ -130,7 +131,7 @@ const char *cart_type_name(){
 
 
 bool cart_load(char *cart){
-	snprintf(char *cart.title, sizeof(cart.title), "%s", cart);
+	snprintf(char *cart->title, sizeof(cart->title), "%s", cart);
 
 	FILE *fp = fopen(cart, "r");
 
@@ -139,45 +140,45 @@ bool cart_load(char *cart){
 	return false;
 	}
 
-	printf("Opened: %s\n", cart.title);
+	printf("Opened: %s\n", cart->title);
 
 	//goes thourgh file and goes to end
 	fseek(fp, 0, SEEK_END);
 
 	//writes end to romsize
-	cart.rom_size = ftell(fp);
+	cart->rom_size = ftell(fp);
 
 	//brings you back to the beginning of the file
 	rewind(fp);
 
 	//allocates the size of the rom for the data section
-	cart.rom_data = malloc(cart.rom_size);
+	cart->rom_data = malloc(cart->rom_size);
 	
 	// read data into rom size one byte at a time from file fp
-	fread(cart.rom_data, cart.rom_size, 1, fp);
+	fread(cart->rom_data, cart->rom_size, 1, fp);
 	fclose(fp);
 
 	//typecast the data as a rom header and shift the rom data to the hardware specs
-	cart.header = (rom_header *)(cart.rom_data + 0x100);
+	cart->header = (rom_header *)(cart->rom_data + 0x100);
 	
 	//sets last value as terminating manually
-	cart.header->title[15] = 0;
+	cart->header->title[15] = 0;
 
 	//printing for debug
 	printf("Cartridge Loaded:\n");
-	printf("\t Title   : %s\n", cart.header->title);
-	printf("\t Type    : %2.2X (%s)\n", cart.header->rom_type, cart_type_name());
-	printf("\t ROM size: %d KB\n", 32 << cart.header->rom_size);
-	printf("\t RAM size: %2.2X\n", cart.header->ram_size);
-	printf("\t LIC code: %2.2X (%s)\n", cart.header->old_lic_code, cart_lic_name());
-	printf("\t ROM Vers: %2.2X\n", cart.header->version);
+	printf("\t Title   : %s\n", cart->header->title);
+	printf("\t Type    : %2.2X (%s)\n", cart->header->rom_type, cart_type_name());
+	printf("\t ROM size: %d KB\n", 32 << cart->header->rom_size);
+	printf("\t RAM size: %2.2X\n", cart->header->ram_size);
+	printf("\t LIC code: %2.2X (%s)\n", cart->header->old_lic_code, cart_lic_name());
+	printf("\t ROM Vers: %2.2X\n", cart->header->version);
  
-	u16 checksum = 0
+	u16 checksum = 0;
 	for(u16 i = 0x134, i<=0x014C; i++){
-	checksum = checksum - cart.rom_data[i] - 1
+	checksum = checksum - cart->rom_data[i] - 1
 	}
 	
-	printf("\t Checksum: %2.2X\n", cart.header->checksum, (checksum & 0xFF) ? "passed" : "fail");
+	printf("\t Checksum: %2.2X\n", cart->header->checksum, (checksum & 0xFF) ? "passed" : "fail");
 	
 	return true;
 
@@ -186,14 +187,14 @@ bool cart_load(char *cart){
 u8 cart_read(u16 address){
 	//ROM ONLY type supported
 
-return ctx.rom_data[address];
+return ctx->rom_data[address];
 
 }
 
 
 void cart_write(u16 address, u8 value){
 
-value = ctx.rom_data[address]
+value = ctx->rom_data[address]
 
 
 }

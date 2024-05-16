@@ -1,5 +1,5 @@
 ## common.h
-Contains some typedef calls to shorten the unsigned standard integers of different sizes to a new shorthand i.e. uint8_t --> u8.
+Contains some typedef calls to shorten the unsigned standard integers of different sizes to a new shorthand i.e. uint8_t --> u8, uint16_t --> u16 and so on and so forth.
 Also has a couple macros for simplified bit manipulation as well as a macro to exit for unimplimented features.
 
 ## bus.h

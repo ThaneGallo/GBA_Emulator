@@ -29,7 +29,7 @@ typedef struct {
 	//checks at end if everything was transmitted
 	u8 checksum;
 	//sum of all bytes except two checksum bytes
-	u8 global_checksum
+	u8 global_checksum;
 
 } rom_header;
 
@@ -38,4 +38,4 @@ u8 cart_read(u16 address);
 void cart_write(u16 address, u8 value);
 
 
-bool cart_load(char *cart)
+bool cart_load(char *cart);

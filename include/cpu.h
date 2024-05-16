@@ -18,12 +18,14 @@ typedef struct {
 } cpu_registers;
 
 typedef struct {
-    cpu_registers regsl;
+    cpu_registers regs;
 
     //current fetch
     u16 fetch_data;
     u16 mem_dest;
+    bool dest_is_mem;
     u8 cur_opcode;
+    instruction *cur_inst;
 
     bool halted;
     bool stepping;
@@ -31,4 +33,4 @@ typedef struct {
 } cpu_context;
 
 void cpt_init();
-int cpu_step();
+bool cpu_step();

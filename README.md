@@ -1,6 +1,12 @@
 # GB_Emulator
-Emulator for Game Boy games
 
-A Gameboy is a 8-bit Nintendo handheld console, it is no longer in production and is now in limited circulation. 
+##Abstract
+The GameBoy is an 8-bit handheld game console from 1989. Although the console and games are no longer in production or being sold commerically the system can be kept alive through emulation. This project aims to create an accurate emulation properly synchronizing cycle timings to allow for the old games (.gb) to be played. 
 
-So in order to presevre these old games we have the ability to mimic the older hardware in a modern day computer processor
+A brief description for each of the neccessary header files can be found within the [include direcitory](../include/README.md)
+
+##Install
+
+##Usage
+
+##References

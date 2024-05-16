@@ -13,6 +13,6 @@ Within this header exists a struct containing 8 8-bit registers for operations a
 The registers are then stored in a cpu_context struct which. 
 
 ## instructions.h
-[instruction set](https://gbdev.io/gb-opcodes/optables/)
+The [instruction set](https://gbdev.io/gb-opcodes/optables/) for the SM83 needs to first be broken down into struct named instruction containing addressing mode, register types, cond type, and parameters. Then a function to get the instruction by its opcode uses a lookup table which contains each instruction's specific information to allow the cpu to process it. 
 
 ## cartridge.h

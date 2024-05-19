@@ -5,7 +5,7 @@
 
 typedef struct {
     u8 a;
-    u8 f;
+    u8 f; // flags
     u8 b;
     u8 c;
     u8 d;
@@ -34,3 +34,10 @@ typedef struct {
 
 void cpt_init();
 bool cpu_step();
+
+typedef void (*IN_PROC)(cpu_context *);
+
+IN_PROC inst_get_processor(in_type type);
+
+#define CPU_FLAG_Z BIT(ctx->regs.f, 7)
+#define CPU_FLAG_C BIT(ctx->regs.f, 4)

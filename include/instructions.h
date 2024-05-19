@@ -3,28 +3,29 @@
 
 typedef enum
 {
-    AM_R_D16,
-    AM_R_R,
-    AM_MR_R,
-    AM_R,
-    AM_R_D8,
-    AM_R_MR,
-    AM_R_HLI,
-    AM_R_HLD,
-    AM_HLI_R,
-    AM_HLD_R,
-    AM_R_A8,
-    AM_A8_R,
-    AM_HL_SPR,
-    AM_D16,
-    AM_D8,
-    AM_IMP,
-    AM_D16_R,
-    AM_MR_D8,
-    AM_MR,
-    AM_A16_R,
-    AM_R_A16
+    AM_R_D16,    // Operand is a register or a direct 16-bit value
+    AM_R_R,      // Operand is two registers
+    AM_MR_R,     // Operand is a memory address specified by a register, and another register
+    AM_R,        // Operand is a register
+    AM_R_D8,     // Operand is a register and a direct 8-bit value
+    AM_R_MR,     // Operand is a register and a memory address specified by another register
+    AM_R_HLI,    // Operand is a register, and the address is pointed to by the HL register pair, and the HL register pair is incremented after the operation
+    AM_R_HLD,    // Operand is a register, and the address is pointed to by the HL register pair, and the HL register pair is decremented after the operation
+    AM_HLI_R,    // Operand is a value pointed to by the HL register pair, and the HL register pair is incremented after the operation
+    AM_HLD_R,    // Operand is a value pointed to by the HL register pair, and the HL register pair is decremented after the operation
+    AM_R_A8,     // Operand is a register and an 8-bit address
+    AM_A8_R,     // Operand is an 8-bit address and a register
+    AM_HL_SPR,   // Operand is the HL register pair or SP (Stack Pointer)
+    AM_D16,      // Operand is a direct 16-bit value
+    AM_D8,       // Operand is a direct 8-bit value
+    AM_IMP,      // Operand is implied or does not need to be specified explicitly
+    AM_D16_R,    // Operand is a direct 16-bit value and a register
+    AM_MR_D8,    // Operand is a memory address specified by a register and a direct 8-bit value
+    AM_MR,       // Operand is a memory address specified by a register
+    AM_A16_R,    // Operand is a 16-bit address and a register
+    AM_R_A16     // Operand is a register and a 16-bit address
 } addr_mode;
+
 typedef enum
 {
     RT_NONE,
@@ -99,13 +100,13 @@ typedef enum
 } in_type;
 
 //
-typedef enum
+typedef enum // for flags
 {
-    CT_NONE,
-    CT_NZ,
-    CT_Z,
-    CT_NC,
-    CT_C
+    CT_NONE, 
+    CT_NZ, //!zero
+    CT_Z, //zero
+    CT_NC, //!carry
+    CT_C //carry
 } cond_type;
 
 typedef struct

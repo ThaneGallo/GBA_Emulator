@@ -33,8 +33,14 @@ typedef struct {
 
 } rom_header;
 
-//uses 16 byte address and outputs 8 byte value at bus
+/*	
+@brief 
+@param
+@return 
+
+*/
 u8 cart_read(u16 address);
+
 void cart_write(u16 address, u8 value);
 
 
